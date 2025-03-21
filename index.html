@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teqade | AI for Business</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: #fff;
+            background-color: #000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .teqade-logo {
+            height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .menu li {
+            margin: 0 20px;
+        }
+        
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .menu a:hover {
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+        }
+        
+        section {
+            padding-top: 70px; /* To account for fixed navbar */
+        }
+        
+        /* Home section styles */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .hero-slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-slide {
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5; /* 50% transparency */
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            transform: translateY(-50%);
+            max-width: 600px;
+            z-index: 3;
+        }
+        
+        .hero-title {
+            font-size: 64px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .cta-button {
+            background-color: #fff;
+            color: #000;
+            padding: 12px 25px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            z-index: 3;
+        }
+        
+        .cta-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .controls {
+            position: absolute;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            z-index: 5;
+        }
+        
+        .control-btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            z-index: 5;
+        }
+        
+        .control-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .slide-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 5;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .indicator.active {
+            background-color: #fff;
+        }
+        
+        /* Expertise section styles */
+        .expertise-header {
+            padding: 100px 50px 50px;
+            background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+        }
+        
+        .expertise-header h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .expertise-header p {
+            font-size: 18px;
+            max-width: 600px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px;
+        }
+        
+        .expertise-card {
+            position: relative;
+            height: 400px;
+            border-radius: 0;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .expertise-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: filter 0.3s ease;
+        }
+        
+        .expertise-card:hover img {
+            filter: brightness(0.5);
+        }
+        
+        .expertise-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0));
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .expertise-card:hover .expertise-content {
+            transform: translateY(-10px);
+        }
+        
+        .expertise-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .expertise-description {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .expertise-card:hover .expertise-description {
+            opacity: 1;
+            max-height: 100px;
+        }
+        
+        .explore-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .expertise-card:hover .explore-btn {
+            opacity: 1;
+        }
+        
+        .advanced-section {
+            padding: 70px 50px;
+            background: linear-gradient(to right, #000000, #111111);
+        }
+        
+        .advanced-section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .advanced-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .advanced-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .advanced-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .advanced-card h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .advanced-card p {
+            color: #cccccc;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* About section */
+        .about-section {
+            padding: 100px 50px;
+            background: linear-gradient(to right, #000000, #222222);
+        }
+        
+        .about-section h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+        
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        
+        /* Contact section */
+        .contact-section {
+            padding: 100px 50px;
+            background: linear-gradient(to right, #111111, #000000);
+        }
+        
+        .contact-section h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 50px;
+            background-color: #111;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <div class="teqade-logo">TEQADE</div>
+        </div>
+        
+        <nav>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#expertise">Our Expertise</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Home Section -->
+    <section id="home" class="hero-slider">
+        <div class="hero-slides">
+            <div class="hero-slide">
+                <img src="sm.jpg" alt="AI Human Interface" class="background-image">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">AI for Small Finance Bank</h1>
+                    <p class="hero-subtitle">Secure and Efficient Banking for the Digital Age.</p>
+                    <a href="#expertise" class="cta-button">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="cattle-m.jpg" alt="AI Human Interface" class="background-image">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">IoT for Cattle Heath Monitoring</h1>
+                    <p class="hero-subtitle">Real-Time Health Tracking for Improved Livestock Management.</p>
+                    <a href="#expertise" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="control-btn" id="prev-btn">&#10094;</button>
+            <button class="control-btn" id="next-btn">&#10095;</button>
+        </div>
+        
+        <div class="slide-indicators">
+            <span class="indicator active" data-index="0"></span>
+            <span class="indicator" data-index="1"></span>
+            <span class="indicator" data-index="2"></span>
+            <span class="indicator" data-index="3"></span>
+        </div>
+    </section>
+    
+    <!-- Expertise Section -->
+    <section id="expertise">
+        <div class="expertise-header">
+            <h1>Our Expertise</h1>
+            <p>LComprehensive technology solutions for modern businesses.</p>
+        </div>
+        
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <img src="walle.jpg" alt="AI">
+                <div class="expertise-content">
+                    <h3 class="expertise-title">Artifical intelligence</h3>
+                    <p class="expertise-description">We help organizations develop comprehensive AI strategies that align with business objectives and deliver measurable ROI.</p>
+                    <a href="#" class="explore-btn">Explore</a>
+                </div>
+            </div>
+            
+            <div class="expertise-card">
+                <img src="cloud.jpg" alt="Cloud">
+                <div class="expertise-content">
+                    <h3 class="expertise-title">Cloud</h3>
+                    <p class="expertise-description">Our machine learning solutions enable predictive analytics, pattern recognition, and data-driven decision making.</p>
+                    <a href="#" class="explore-btn">Explore</a>
+                </div>
+            </div>
+            
+            <div class="expertise-card">
+                <img src="data.jpg" alt="Data Engineering">
+                <div class="expertise-content">
+                    <h3 class="expertise-title">Data Engineering</h3>
+                    <p class="expertise-description">We build advanced NLP systems for text analysis, sentiment analysis, and conversational AI applications.</p>
+                    <a href="#" class="explore-btn">Explore</a>
+                </div>
+            </div>
+            
+            <div class="expertise-card">
+                <img src="iot.jpg" alt="IOT">
+                <div class="expertise-content">
+                    <h3 class="expertise-title">IoT Engineering</h3>
+                    <p class="expertise-description">Our computer vision expertise enables image recognition, object detection, and visual data analysis for various applications.</p>
+                    <a href="#" class="explore-btn">Explore</a>
+                </div>
+            </div>
+            
+
+        </div>
+        
+        <div class="advanced-section">
+            <h2>Advanced AI Capabilities</h2>
+            <div class="advanced-grid">
+                <div class="advanced-card">
+                    <h3>AI for Healthcare</h3>
+                    <p>Our healthcare AI solutions improve diagnostic accuracy, optimize treatment plans, and enhance patient outcomes through personalized medicine approaches.</p>
+                    <a href="#" class="explore-btn">Learn More</a>
+                </div>
+                
+                <div class="advanced-card">
+                    <h3>Financial AI Systems</h3>
+                    <p>We develop AI systems for risk assessment, fraud detection, algorithmic trading, and personalized financial recommendations for the banking industry.</p>
+                    <a href="#" class="explore-btn">Learn More</a>
+                </div>
+                
+                <div class="advanced-card">
+                    <h3>Manufacturing AI</h3>
+                    <p>Our AI solutions for manufacturing enable predictive maintenance, quality control automation, supply chain optimization, and smart factory operations.</p>
+                    <a href="#" class="explore-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h1>About Teqade</h1>
+        <p>Teqade is a leading AI solutions provider dedicated to helping businesses harness the power of artificial intelligence to drive innovation, improve efficiency, and create competitive advantages.</p>
+        <p>Our team of AI experts combines deep technical knowledge with business acumen to deliver practical solutions that address real-world challenges across industries.</p>
+        <p>Founded in 2020, we've helped over 100 organizations implement successful AI initiatives that deliver measurable results and transform how they operate.</p>
+        <a href="#contact" class="cta-button">Get to Know Us</a>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h1>Contact Us</h1>
+        <div class="contact-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2025 Teqade. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hero slider functionality
+            const heroSlides = document.querySelector('.hero-slides');
+            const slides = document.querySelectorAll('.hero-slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            
+            function updateSlider() {
+                heroSlides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Only set up slider controls if there are multiple slides
+            if (totalSlides > 1) {
+                prevBtn.addEventListener('click', function() {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                    } else {
+                        currentIndex = totalSlides - 1;
+                    }
+                    updateSlider();
+                });
+                
+                nextBtn.addEventListener('click', function() {
+                    if (currentIndex < totalSlides - 1) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    updateSlider();
+                });
+                
+                // Make indicators clickable
+                indicators.forEach(indicator => {
+                    indicator.addEventListener('click', function() {
+                        currentIndex = parseInt(this.getAttribute('data-index'));
+                        updateSlider();
+                    });
+                });
+            }
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
