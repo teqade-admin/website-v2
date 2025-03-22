@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teqade | AI for Business</title>
+    <link rel="icon" href="logo-green.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logo-green.png" type="image/x-icon">
+    <!-- First, add Font Awesome CDN to your head section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Teqade | Delivering the Future</title>
     <style>
         * {
             margin: 0;
@@ -411,7 +416,144 @@
         .submit-btn:hover {
             background-color: rgba(255, 255, 255, 0.8);
         }
-        
+                                
+        /* Contact section styling */
+        .contact-section {
+            padding: 100px 50px;
+            background: linear-gradient(to right, #111111, #000000);
+        }
+
+        .contact-section h1 {
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+
+        /* Contact card container */
+        .contact-card {
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Form side styling */
+        .contact-form-side {
+            flex: 1.5;
+            padding: 40px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-form-side h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 3px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Info side styling */
+        .contact-info-side {
+            flex: 1;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info-side h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .info-item i {
+            font-size: 24px;
+            margin-right: 20px;
+            color: white;
+            width: 24px;
+            text-align: center;
+        }
+
+        .info-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .info-item p {
+            color: #cccccc;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .contact-card {
+                flex-direction: column;
+            }
+            
+            .contact-form-side {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 70px 30px;
+            }
+            
+            .contact-form-side,
+            .contact-info-side {
+                padding: 30px;
+            }
+        }
         /* Footer */
         footer {
             padding: 50px;
@@ -428,6 +570,7 @@
 <body>
     <header class="navbar">
         <div class="logo">
+            <img src="logo-dark-bg.png" alt="Teqade Logo" style="height: 30px; margin-right: 10px;">
             <div class="teqade-logo">TEQADE</div>
         </div>
         
@@ -450,7 +593,7 @@
                 <div class="hero-content">
                     <h1 class="hero-title">AI for Small Finance Bank</h1>
                     <p class="hero-subtitle">Secure and Efficient Banking for the Digital Age.</p>
-                    <a href="#expertise" class="cta-button">Learn More</a>
+                    <a href="sfb-offerings.pdf" class="cta-button" target="_blank">Learn More</a>
                 </div>
             </div>
             <div class="hero-slide">
@@ -459,7 +602,16 @@
                 <div class="hero-content">
                     <h1 class="hero-title">IoT for Cattle Heath Monitoring</h1>
                     <p class="hero-subtitle">Real-Time Health Tracking for Improved Livestock Management.</p>
-                    <a href="#expertise" class="cta-button">Learn More</a>
+                    <a href="sfb-offerings.pdf" class="cta-button" target="_blank">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="pharma.jpg" alt="IoT Pharma" class="background-image">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title">IoT for Pharma Industry</h1>
+                    <p class="hero-subtitle">Intelligent Monitoring Solutions for Supply Chain and Manufacturing Compliance.</p>
+                    <a href="sfb-offerings.pdf" class="cta-button" target="_blank">Learn More</a>
                 </div>
             </div>
         </div>
@@ -481,14 +633,14 @@
     <section id="expertise">
         <div class="expertise-header">
             <h1>Our Expertise</h1>
-            <p>LComprehensive technology solutions for modern businesses.</p>
+            <p>Comprehensive technology solutions for modern businesses.</p>
         </div>
         
         <div class="expertise-grid">
             <div class="expertise-card">
                 <img src="walle.jpg" alt="AI">
                 <div class="expertise-content">
-                    <h3 class="expertise-title">Artifical intelligence</h3>
+                    <h3 class="expertise-title">Artificial Intelligence</h3>
                     <p class="expertise-description">We help organizations develop comprehensive AI strategies that align with business objectives and deliver measurable ROI.</p>
                     <a href="#" class="explore-btn">Explore</a>
                 </div>
@@ -498,7 +650,7 @@
                 <img src="cloud.jpg" alt="Cloud">
                 <div class="expertise-content">
                     <h3 class="expertise-title">Cloud</h3>
-                    <p class="expertise-description">Our machine learning solutions enable predictive analytics, pattern recognition, and data-driven decision making.</p>
+                    <p class="expertise-description">Our cloud solutions enable scalable infrastructure, secure data storage, and flexible deployment options for businesses of all sizes.</p>
                     <a href="#" class="explore-btn">Explore</a>
                 </div>
             </div>
@@ -507,7 +659,7 @@
                 <img src="data.jpg" alt="Data Engineering">
                 <div class="expertise-content">
                     <h3 class="expertise-title">Data Engineering</h3>
-                    <p class="expertise-description">We build advanced NLP systems for text analysis, sentiment analysis, and conversational AI applications.</p>
+                    <p class="expertise-description">We design and implement robust data pipelines, warehousing solutions, and analytics platforms to transform raw data into actionable insights.</p>
                     <a href="#" class="explore-btn">Explore</a>
                 </div>
             </div>
@@ -516,64 +668,152 @@
                 <img src="iot.jpg" alt="IOT">
                 <div class="expertise-content">
                     <h3 class="expertise-title">IoT Engineering</h3>
-                    <p class="expertise-description">Our computer vision expertise enables image recognition, object detection, and visual data analysis for various applications.</p>
+                    <p class="expertise-description">Our IoT expertise enables connected device ecosystems, sensor networks, and real-time monitoring systems for smart environments and processes.</p>
                     <a href="#" class="explore-btn">Explore</a>
                 </div>
             </div>
             
-
-        </div>
-        
-        <div class="advanced-section">
-            <h2>Advanced AI Capabilities</h2>
-            <div class="advanced-grid">
-                <div class="advanced-card">
-                    <h3>AI for Healthcare</h3>
-                    <p>Our healthcare AI solutions improve diagnostic accuracy, optimize treatment plans, and enhance patient outcomes through personalized medicine approaches.</p>
-                    <a href="#" class="explore-btn">Learn More</a>
+            <div class="expertise-card">
+                <img src="sd.jpg" alt="Software Development">
+                <div class="expertise-content">
+                    <h3 class="expertise-title">Software Development</h3>
+                    <p class="expertise-description">We create custom software solutions including web applications, mobile apps, and enterprise systems that solve complex business challenges.</p>
+                    <a href="#" class="explore-btn">Explore</a>
                 </div>
-                
-                <div class="advanced-card">
-                    <h3>Financial AI Systems</h3>
-                    <p>We develop AI systems for risk assessment, fraud detection, algorithmic trading, and personalized financial recommendations for the banking industry.</p>
-                    <a href="#" class="explore-btn">Learn More</a>
-                </div>
-                
-                <div class="advanced-card">
-                    <h3>Manufacturing AI</h3>
-                    <p>Our AI solutions for manufacturing enable predictive maintenance, quality control automation, supply chain optimization, and smart factory operations.</p>
-                    <a href="#" class="explore-btn">Learn More</a>
+            </div>
+   
+            <div class="expertise-card">
+                <img src="devops.jpg" alt="DevOps">
+                <div class="expertise-content">
+                    <h3 class="expertise-title">DevOps Solutions</h3>
+                    <p class="expertise-description">We implement DevOps practices, CI/CD pipelines, and infrastructure automation to accelerate software delivery and improve operational reliability.</p>
+                    <a href="#" class="explore-btn">Explore</a>
                 </div>
             </div>
         </div>
+        
+        <!-- Then update your industries section with icons -->
+    <div class="advanced-section">
+        <h2>Industries We Serve</h2>
+        <div class="advanced-grid">
+            <div class="advanced-card">
+                <i class="fas fa-hospital fa-2x" style="margin-bottom: 20px; color: #ffffff;"></i>
+                <h3>Healthcare</h3>
+                <p>Our technology solutions transform healthcare delivery and patient outcomes by leveraging AI, cloud, data engineering, and IoT to address the unique challenges of medical institutions and care providers.</p>
+                <a href="#" class="explore-btn">Learn More</a>
+            </div>
+            
+            <div class="advanced-card">
+                <i class="fas fa-landmark fa-2x" style="margin-bottom: 20px; color: #ffffff;"></i>
+                <h3>Financial Services</h3>
+                <p>We help financial institutions navigate digital transformation with innovative technology solutions that enhance security, improve customer experiences, and optimize operations across all aspects of the business.</p>
+                <a href="#" class="explore-btn">Learn More</a>
+            </div>
+            
+            <div class="advanced-card">
+                <i class="fas fa-industry fa-2x" style="margin-bottom: 20px; color: #ffffff;"></i>
+                <h3>Manufacturing</h3>
+                <p>Our comprehensive technology approach enables manufacturing enterprises to modernize operations, increase efficiency, reduce costs, and develop innovative products in an increasingly competitive marketplace.</p>
+                <a href="#" class="explore-btn">Learn More</a>
+            </div>
+            
+            <div class="advanced-card">
+                <i class="fas fa-truck fa-2x" style="margin-bottom: 20px; color: #ffffff;"></i>
+                <h3>Logistics</h3>
+                <p>We empower logistics companies with technology solutions that streamline operations, enhance visibility, improve decision-making, and create more resilient and adaptive supply chain systems.</p>
+                <a href="#" class="explore-btn">Learn More</a>
+            </div>
+            
+            <div class="advanced-card">
+                <i class="fas fa-shopping-cart fa-2x" style="margin-bottom: 20px; color: #ffffff;"></i>
+                <h3>Retail</h3>
+                <p>Our solutions help retailers evolve with changing consumer behaviors by implementing technology that delivers personalized experiences, optimizes inventory, and creates seamless omnichannel journeys.</p>
+                <a href="#" class="explore-btn">Learn More</a>
+            </div>
+            
+            <div class="advanced-card">
+                <i class="fas fa-car fa-2x" style="margin-bottom: 20px; color: #ffffff;"></i>
+                <h3>Automobile</h3>
+                <p>We support automotive innovation with technology solutions that enhance vehicle performance, improve manufacturing processes, enable new features, and create more intelligent transportation systems.</p>
+                <a href="#" class="explore-btn">Learn More</a>
+            </div>
+            
+            <div class="advanced-card">
+                <i class="fas fa-leaf fa-2x" style="margin-bottom: 20px; color: #ffffff;"></i>
+                <h3>Agriculture</h3>
+                <p>Our technology solutions help agricultural businesses increase productivity, optimize resource utilization, improve sustainability, and make data-driven decisions for better crop and livestock management.</p>
+                <a href="#" class="explore-btn">Learn More</a>
+            </div>
+        </div>
+    </div>
     </section>
     
     <!-- About Section -->
     <section id="about" class="about-section">
         <h1>About Teqade</h1>
-        <p>Teqade is a leading AI solutions provider dedicated to helping businesses harness the power of artificial intelligence to drive innovation, improve efficiency, and create competitive advantages.</p>
-        <p>Our team of AI experts combines deep technical knowledge with business acumen to deliver practical solutions that address real-world challenges across industries.</p>
-        <p>Founded in 2020, we've helped over 100 organizations implement successful AI initiatives that deliver measurable results and transform how they operate.</p>
+        <p>At Teqade Technologies, we are at the forefront of digital innovation, dedicated to transforming businesses with cutting-edge solutions. Our expertise lies in harnessing the power of Artificial Intelligence, Cloud Computing, Data Engineering, and IoT to solve complex challenges and drive measurable results.</p>
+        <p>Founded on the principles of innovation and excellence, we work closely with our clients to deliver tailored strategies and scalable solutions that empower growth. From startups to enterprises, our focus is on enabling businesses to thrive in a rapidly evolving technological landscape.</p>
+        <p>With a passionate team of technologists and a commitment to delivering exceptional value, Teqade Technologies is your trusted partner for achieving sustainable success in the digital age.</p>
         <a href="#contact" class="cta-button">Get to Know Us</a>
     </section>
     
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <h1>Contact Us</h1>
-        <div class="contact-form">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your Name">
+        
+        <div class="contact-card">
+            <div class="contact-form-side">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
             </div>
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your Email">
+            
+            <div class="contact-info-side">
+                <h2>Contact Information</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Location</h3>
+                        <p>No.2, 8th Floor, KRM Plaza</p>
+                        <p>Harrington Road, Chetpet, TN 600031</p>
+                        <p>India</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>teqadetechnologies@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Indian Standard Time (IST)</p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" placeholder="Your Message"></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
         </div>
     </section>
     
